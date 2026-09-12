@@ -1,0 +1,1265 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Динара · Перманентный макияж</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#faf6f1;
+  --bg-2:#f4ece2;
+  --card:#ffffff;
+  --fg:#2d2126;
+  --fg-soft:#5c4a50;
+  --muted:#9a8b90;
+  --rose:#c08479;
+  --rose-deep:#a86b60;
+  --rose-soft:rgba(192,132,121,.12);
+  --rose-ring:rgba(192,132,121,.30);
+  --gold:#c9a87c;
+  --gold-soft:rgba(201,168,124,.16);
+  --green:#7a9e7e;
+  --green-soft:rgba(122,158,126,.14);
+  --red:#c47a72;
+  --red-soft:rgba(196,122,114,.12);
+  --line:rgba(45,33,38,.09);
+  --line-strong:rgba(45,33,38,.16);
+  --shadow-sm:0 1px 2px rgba(45,33,38,.04),0 1px 3px rgba(45,33,38,.04);
+  --shadow-md:0 4px 14px -6px rgba(45,33,38,.10),0 2px 6px -2px rgba(45,33,38,.05);
+  --shadow-lg:0 24px 48px -24px rgba(45,33,38,.20),0 10px 24px -14px rgba(45,33,38,.10);
+  --serif:'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  --sans:'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, system-ui, sans-serif;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+
+body{
+  margin:0;min-height:100vh;
+  color:var(--fg);
+  font-family:var(--sans);
+  font-size:15px;
+  line-height:1.55;
+  background:
+    radial-gradient(800px 500px at 20% 0%, rgba(192,132,121,.07), transparent 60%),
+    radial-gradient(700px 500px at 90% 100%, rgba(201,168,124,.07), transparent 60%),
+    var(--bg);
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+
+.wrap{position:relative;max-width:920px;margin:0 auto;padding:0 clamp(16px,3vw,32px) 80px}
+
+/* ---------- HEADER ---------- */
+.site-header{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:22px 0 14px;
+  gap:16px;flex-wrap:wrap;
+}
+.logo{
+  display:flex;align-items:center;gap:12px;
+}
+.logo .mark{
+  width:38px;height:38px;border-radius:50%;
+  background:linear-gradient(135deg,var(--rose),var(--gold));
+  display:grid;place-items:center;
+  color:#fff;font-family:var(--serif);font-size:20px;font-weight:600;
+  box-shadow:0 6px 14px -6px var(--rose-ring);
+}
+.logo .txt{font-family:var(--serif);font-size:20px;font-weight:600;letter-spacing:.01em}
+
+.admin-toggle{
+  background:transparent;border:1px solid var(--line-strong);
+  color:var(--fg-soft);font-family:inherit;font-size:12.5px;font-weight:500;
+  padding:8px 16px;border-radius:999px;cursor:pointer;
+  transition:.2s;display:flex;align-items:center;gap:8px;
+}
+.admin-toggle:hover{border-color:var(--rose);color:var(--rose)}
+.admin-toggle.active{
+  background:var(--rose);color:#fff;border-color:var(--rose);
+  box-shadow:0 4px 12px -4px var(--rose-ring);
+}
+
+/* ---------- HERO ---------- */
+.hero{
+  text-align:center;
+  padding:40px 0 48px;
+  position:relative;
+}
+.hero::before{
+  content:'✦';
+  display:block;
+  color:var(--gold);
+  font-size:24px;
+  margin-bottom:14px;
+  opacity:.7;
+}
+.hero h1{
+  font-family:var(--serif);font-weight:500;
+  font-size:clamp(38px,7vw,62px);
+  line-height:1.05;
+  letter-spacing:-.02em;
+  margin:0 0 14px;
+}
+.hero h1 em{font-style:italic;color:var(--rose-deep);font-weight:400}
+.hero .tagline{
+  font-size:15px;color:var(--fg-soft);
+  max-width:42ch;margin:0 auto;
+  letter-spacing:.02em;
+}
+.hero .master-line{
+  margin-top:22px;
+  font-size:13px;color:var(--muted);
+  letter-spacing:.18em;text-transform:uppercase;
+}
+.hero .master-line b{color:var(--rose-deep);font-weight:500}
+
+/* ---------- SERVICES ---------- */
+.services{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-bottom:56px}
+.service{
+  background:var(--card);border-radius:16px;padding:20px 18px;
+  box-shadow:var(--shadow-sm);
+  transition:box-shadow .2s, transform .15s;
+}
+.service:hover{box-shadow:var(--shadow-md);transform:translateY(-2px)}
+.service .name{
+  font-family:var(--serif);font-size:19px;font-weight:600;
+  letter-spacing:-.005em;margin-bottom:6px;
+}
+.service .desc{
+  font-size:12.5px;color:var(--muted);line-height:1.5;
+}
+.service .price{
+  margin-top:12px;font-size:13px;font-weight:600;color:var(--rose-deep);
+  font-variant-numeric:tabular-nums;
+}
+
+/* ---------- CALENDAR SECTION ---------- */
+.section-head{
+  display:flex;justify-content:space-between;align-items:center;
+  margin-bottom:18px;flex-wrap:wrap;gap:12px;
+}
+.section-head h2{
+  font-family:var(--serif);font-size:26px;font-weight:600;
+  letter-spacing:-.01em;margin:0;
+}
+.month-nav{
+  display:flex;align-items:center;gap:4px;
+  background:var(--card);border-radius:999px;padding:4px;
+  box-shadow:var(--shadow-sm);
+}
+.month-nav button{
+  background:transparent;border:none;color:var(--fg-soft);
+  width:34px;height:34px;border-radius:999px;cursor:pointer;
+  font-size:16px;transition:.2s;
+  display:grid;place-items:center;
+}
+.month-nav button:hover{background:var(--rose-soft);color:var(--rose-deep)}
+.month-nav button:disabled{opacity:.3;cursor:not-allowed}
+.month-nav .label{
+  font-size:13.5px;font-weight:600;min-width:140px;text-align:center;
+  letter-spacing:.02em;
+}
+
+.calendar{
+  background:var(--card);border-radius:20px;padding:20px;
+  box-shadow:var(--shadow-md);
+  margin-bottom:16px;
+}
+.weekdays{
+  display:grid;grid-template-columns:repeat(7,1fr);
+  gap:4px;margin-bottom:8px;
+}
+.weekdays span{
+  text-align:center;font-size:11px;font-weight:600;
+  color:var(--muted);letter-spacing:.14em;text-transform:uppercase;
+  padding:6px 0;
+}
+.days{
+  display:grid;grid-template-columns:repeat(7,1fr);gap:4px;
+}
+.day{
+  aspect-ratio:1/1;
+  border-radius:12px;
+  border:none;
+  background:transparent;
+  cursor:pointer;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:5px;
+  position:relative;
+  font-family:inherit;color:var(--fg);
+  transition:background .15s, transform .12s;
+  padding:6px 2px;
+}
+.day.other-month{color:var(--muted);opacity:.35}
+.day.past,.day.closed{color:var(--muted);cursor:default;opacity:.5}
+.day.today{font-weight:700}
+.day.today::after{
+  content:'';position:absolute;top:6px;right:6px;
+  width:5px;height:5px;border-radius:50%;background:var(--gold);
+}
+.day .num{
+  font-size:15px;font-weight:500;
+  font-variant-numeric:tabular-nums;
+}
+.day .dot{
+  width:6px;height:6px;border-radius:50%;
+  transition:background .2s;
+}
+.day.free .dot{background:var(--green)}
+.day.partial .dot{background:var(--gold)}
+.day.full .dot{background:var(--rose)}
+.day.closed .dot{display:none}
+
+.day:not(.past):not(.closed):not(.other-month):hover{
+  background:var(--bg-2);
+  transform:translateY(-1px);
+}
+.day.selected{
+  background:var(--rose);color:#fff;
+  box-shadow:0 6px 14px -6px var(--rose-ring);
+}
+.day.selected .dot{background:rgba(255,255,255,.85)}
+.day.selected .num{color:#fff}
+
+.legend{
+  display:flex;gap:20px;flex-wrap:wrap;
+  justify-content:center;
+  font-size:12.5px;color:var(--muted);
+  margin-top:18px;
+}
+.legend span{display:flex;align-items:center;gap:7px}
+.legend .dot{width:8px;height:8px;border-radius:50%}
+.legend .dot.free{background:var(--green)}
+.legend .dot.partial{background:var(--gold)}
+.legend .dot.full{background:var(--rose)}
+.legend .dot.closed{background:var(--muted);opacity:.5}
+
+/* ---------- MODAL ---------- */
+.modal{
+  position:fixed;inset:0;z-index:100;
+  background:rgba(45,33,38,.45);
+  backdrop-filter:blur(6px);
+  -webkit-backdrop-filter:blur(6px);
+  display:none;
+  align-items:center;justify-content:center;
+  padding:20px;
+  animation:fadeIn .2s ease;
+}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.modal.open{display:flex}
+.modal-content{
+  background:var(--card);border-radius:22px;
+  width:100%;max-width:480px;
+  max-height:90vh;overflow-y:auto;
+  box-shadow:var(--shadow-lg);
+  position:relative;
+  animation:slideUp .25s cubic-bezier(.2,.9,.3,1);
+}
+@keyframes slideUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+.modal-close{
+  position:absolute;top:14px;right:14px;
+  background:transparent;border:none;
+  width:34px;height:34px;border-radius:50%;
+  color:var(--muted);cursor:pointer;
+  font-size:18px;line-height:1;
+  display:grid;place-items:center;
+  transition:.15s;z-index:2;
+}
+.modal-close:hover{background:var(--bg-2);color:var(--fg)}
+
+.modal-body{padding:28px}
+
+.modal-title{
+  font-family:var(--serif);font-size:24px;font-weight:600;
+  letter-spacing:-.01em;margin:0 0 4px;
+}
+.modal-sub{
+  font-size:13px;color:var(--muted);margin-bottom:22px;
+}
+
+/* ---------- SLOTS ---------- */
+.slots{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px;
+}
+.slot{
+  border:1.5px solid var(--line-strong);
+  background:var(--card);
+  border-radius:12px;
+  padding:14px 12px;
+  text-align:center;
+  cursor:pointer;
+  font-family:inherit;color:var(--fg);
+  transition:.15s;
+  display:flex;flex-direction:column;gap:3px;align-items:center;
+}
+.slot .time{
+  font-size:14px;font-weight:600;
+  font-variant-numeric:tabular-nums;
+  letter-spacing:.01em;
+}
+.slot .status{
+  font-size:11px;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--muted);
+}
+.slot.free:hover{
+  border-color:var(--green);
+  background:var(--green-soft);
+  transform:translateY(-1px);
+}
+.slot.free .status{color:var(--green)}
+.slot.busy{
+  background:var(--bg-2);
+  border-color:transparent;
+  cursor:not-allowed;
+  color:var(--muted);
+}
+.slot.busy .status{color:var(--rose-deep)}
+.slot.blocked{
+  background:var(--bg-2);
+  border-color:transparent;
+  cursor:not-allowed;
+  color:var(--muted);
+  opacity:.75;
+}
+.slot.blocked .status{color:var(--muted)}
+
+/* ---------- FORM ---------- */
+.form-field{display:flex;flex-direction:column;gap:6px;margin-bottom:14px}
+.form-field label{
+  font-size:12px;color:var(--muted);font-weight:500;
+  letter-spacing:.05em;padding-left:2px;
+}
+.form-field input,
+.form-field select,
+.form-field textarea{
+  background:var(--bg-2);
+  border:1.5px solid transparent;
+  color:var(--fg);
+  font-family:inherit;font-size:15px;
+  padding:11px 14px;border-radius:12px;
+  outline:none;width:100%;
+  transition:border-color .2s, background .2s, box-shadow .2s;
+  -webkit-appearance:none;appearance:none;
+}
+.form-field select{
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%239a8b90' d='M6 8 0 0h12z'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;
+  background-position:right 14px center;
+  padding-right:36px;
+}
+.form-field textarea{resize:vertical;min-height:70px;font-size:14px}
+.form-field input:hover,
+.form-field select:hover,
+.form-field textarea:hover{border-color:var(--line-strong)}
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus{
+  background:var(--card);
+  border-color:var(--rose);
+  box-shadow:0 0 0 4px var(--rose-soft);
+}
+.form-field input::placeholder,
+.form-field textarea::placeholder{color:rgba(154,139,144,.7)}
+
+.summary-box{
+  background:var(--bg-2);
+  border-radius:14px;padding:14px 16px;
+  margin-bottom:18px;
+  font-size:13.5px;
+}
+.summary-box .row{
+  display:flex;justify-content:space-between;
+  padding:4px 0;
+}
+.summary-box .row + .row{border-top:1px solid var(--line)}
+.summary-box .lbl{color:var(--muted)}
+.summary-box .val{font-weight:600;color:var(--fg);font-variant-numeric:tabular-nums}
+
+.btn{
+  font-family:inherit;font-size:14px;font-weight:600;
+  padding:13px 22px;border-radius:12px;
+  background:var(--rose);color:#fff;border:none;
+  cursor:pointer;width:100%;
+  box-shadow:0 8px 18px -8px var(--rose-ring);
+  transition:transform .12s, filter .15s, box-shadow .2s;
+}
+.btn:hover{filter:brightness(1.06);box-shadow:0 10px 24px -8px var(--rose-ring)}
+.btn:active{transform:translateY(1px)}
+.btn:disabled{opacity:.4;cursor:not-allowed;filter:none;box-shadow:none}
+.btn.secondary{
+  background:transparent;color:var(--fg-soft);
+  border:1.5px solid var(--line-strong);box-shadow:none;
+}
+.btn.secondary:hover{border-color:var(--rose);color:var(--rose);background:var(--rose-soft)}
+
+/* success */
+.success{
+  text-align:center;padding:18px 8px 8px;
+}
+.success .icon{
+  width:64px;height:64px;border-radius:50%;
+  background:var(--green-soft);color:var(--green);
+  display:grid;place-items:center;
+  font-size:30px;margin:0 auto 18px;
+}
+.success h3{
+  font-family:var(--serif);font-size:24px;font-weight:600;
+  margin:0 0 8px;letter-spacing:-.01em;
+}
+.success p{color:var(--fg-soft);font-size:14px;margin:0 0 22px}
+
+/* ---------- ADMIN ---------- */
+.admin-section{
+  display:none;
+  background:var(--card);border-radius:20px;padding:22px;
+  box-shadow:var(--shadow-md);
+  margin-top:16px;
+}
+.admin-section.visible{display:block}
+
+.admin-tabs{
+  display:flex;gap:0;margin-bottom:18px;
+  border-bottom:1px solid var(--line);
+}
+.admin-tabs button{
+  background:transparent;border:none;
+  color:var(--muted);font-family:inherit;font-size:13.5px;font-weight:500;
+  padding:10px 16px;cursor:pointer;
+  border-bottom:2px solid transparent;
+  margin-bottom:-1px;transition:.15s;
+}
+.admin-tabs button:hover{color:var(--fg)}
+.admin-tabs button.active{
+  color:var(--rose-deep);border-bottom-color:var(--rose);
+  font-weight:600;
+}
+
+.bookings-list{display:flex;flex-direction:column;gap:10px}
+
+.booking{
+  background:var(--bg-2);
+  border-radius:14px;padding:14px 16px;
+  display:flex;flex-direction:column;gap:8px;
+}
+.booking.past{opacity:.6}
+.booking .top-row{
+  display:flex;justify-content:space-between;align-items:baseline;
+  gap:10px;flex-wrap:wrap;
+}
+.booking .when{
+  font-weight:600;font-size:14.5px;
+  font-variant-numeric:tabular-nums;
+}
+.booking .status-pill{
+  font-size:11px;font-weight:600;
+  padding:3px 10px;border-radius:999px;
+  letter-spacing:.05em;text-transform:uppercase;
+}
+.status-pill.pending{background:var(--gold-soft);color:#8a6f3a}
+.status-pill.confirmed{background:var(--green-soft);color:#3d6242}
+.status-pill.cancelled{background:var(--red-soft);color:#8a3c35}
+.status-pill.past{background:var(--line-strong);color:var(--fg-soft)}
+
+.booking .client{
+  font-size:14px;color:var(--fg);
+  display:flex;flex-wrap:wrap;gap:10px;align-items:center;
+}
+.booking .client .name{font-weight:600}
+.booking .client .phone{
+  font-family:var(--mono,monospace);
+  color:var(--fg-soft);font-size:13px;
+}
+.booking .service-line{font-size:13px;color:var(--muted)}
+.booking .notes{
+  font-size:13px;color:var(--fg-soft);
+  font-style:italic;padding:6px 10px;
+  background:rgba(255,255,255,.5);border-radius:8px;
+}
+.booking .actions{
+  display:flex;gap:6px;flex-wrap:wrap;margin-top:4px;
+}
+.booking .actions button{
+  font-family:inherit;font-size:12.5px;font-weight:600;
+  padding:7px 14px;border-radius:9px;
+  cursor:pointer;border:none;transition:.15s;
+  background:var(--card);color:var(--fg-soft);
+  border:1px solid var(--line-strong);
+}
+.booking .actions button:hover{color:var(--fg);border-color:var(--fg-soft)}
+.booking .actions button.confirm{
+  background:var(--green);color:#fff;border-color:var(--green);
+}
+.booking .actions button.confirm:hover{filter:brightness(1.08)}
+.booking .actions button.cancel{
+  background:var(--gold);color:#fff;border-color:var(--gold);
+}
+.booking .actions button.cancel:hover{filter:brightness(1.08)}
+.booking .actions button.del{
+  background:transparent;color:var(--red);border-color:var(--red-soft);
+}
+.booking .actions button.del:hover{background:var(--red-soft)}
+
+.empty-state{
+  text-align:center;padding:40px 16px;
+  color:var(--muted);font-size:13.5px;
+}
+.empty-state .big{
+  display:block;font-size:28px;margin-bottom:10px;opacity:.4;
+}
+
+/* ---------- SYNC ---------- */
+.sync{
+  position:fixed;bottom:16px;right:16px;z-index:50;
+  font-size:11.5px;color:var(--muted);
+  display:flex;align-items:center;gap:7px;
+  pointer-events:none;
+  background:var(--card);padding:6px 12px;border-radius:999px;
+  box-shadow:var(--shadow-sm);
+  transition:color .3s;
+}
+.sync .dot{
+  width:6px;height:6px;border-radius:50%;
+  background:var(--muted);transition:.3s;
+}
+.sync.online .dot{background:var(--green);box-shadow:0 0 0 3px var(--green-soft)}
+.sync.offline .dot{background:var(--red);box-shadow:0 0 0 3px var(--red-soft)}
+.sync.online{color:var(--green)}
+.sync.offline{color:var(--red)}
+
+/* ---------- FOOTER ---------- */
+.site-footer{
+  text-align:center;padding:40px 0 0;
+  font-size:12.5px;color:var(--muted);
+}
+.site-footer .sign{font-family:var(--serif);font-size:15px;color:var(--fg-soft);margin-bottom:6px}
+
+@media (max-width:520px){
+  .hero{padding:28px 0 36px}
+  .hero h1{font-size:36px}
+  .modal{padding:0;align-items:flex-end}
+  .modal-content{
+    border-radius:22px 22px 0 0;
+    max-height:92vh;
+  }
+  .modal-body{padding:24px 20px}
+  .slots{grid-template-columns:1fr 1fr}
+  .calendar{padding:14px}
+  .day .num{font-size:14px}
+  .day{border-radius:10px}
+  .section-head h2{font-size:22px}
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header class="site-header">
+    <div class="logo">
+      <div class="mark">Д</div>
+      <div class="txt">Динара</div>
+    </div>
+    <button class="admin-toggle" id="adminToggle">
+      <span>Мастер</span>
+    </button>
+  </header>
+
+  <section class="hero">
+    <h1>Перманентный<br><em>макияж</em></h1>
+    <p class="tagline">Естественные линии, деликатные оттенки, форма под ваши черты. Запишитесь на удобное время.</p>
+    <div class="master-line">Мастер · <b>Динара</b></div>
+  </section>
+
+  <section class="services">
+    <div class="service">
+      <div class="name">Пудровые брови</div>
+      <div class="desc">Мягкая растушёвка, эффект натуральной густоты</div>
+      <div class="price">8 000 ₽ · ~2 ч</div>
+    </div>
+    <div class="service">
+      <div class="name">Татуаж губ</div>
+      <div class="desc">Природный оттенок и чёткий контур</div>
+      <div class="price">10 000 ₽ · ~2 ч</div>
+    </div>
+    <div class="service">
+      <div class="name">Межресничка</div>
+      <div class="desc">Визуально густые ресницы без туши</div>
+      <div class="price">6 000 ₽ · ~2 ч</div>
+    </div>
+    <div class="service">
+      <div class="name">Коррекция</div>
+      <div class="desc">Обновление цвета и формы после заживления</div>
+      <div class="price">4 000 ₽ · ~2 ч</div>
+    </div>
+  </section>
+
+  <div class="section-head">
+    <h2>Запись</h2>
+    <div class="month-nav">
+      <button id="prevMonth" aria-label="Назад">‹</button>
+      <div class="label" id="monthLabel">—</div>
+      <button id="nextMonth" aria-label="Вперёд">›</button>
+    </div>
+  </div>
+
+  <div class="calendar">
+    <div class="weekdays">
+      <span>Пн</span><span>Вт</span><span>Ср</span><span>Чт</span><span>Пт</span><span>Сб</span><span>Вс</span>
+    </div>
+    <div class="days" id="days"></div>
+  </div>
+
+  <div class="legend">
+    <span><span class="dot free"></span>Все окна свободны</span>
+    <span><span class="dot partial"></span>Есть места</span>
+    <span><span class="dot full"></span>Всё занято</span>
+    <span><span class="dot closed"></span>Выходной</span>
+  </div>
+
+  <!-- ADMIN PANEL -->
+  <section class="admin-section" id="adminPanel">
+    <div class="section-head" style="margin-bottom:14px">
+      <h2 style="font-size:22px">Панель мастера</h2>
+    </div>
+    <div class="admin-tabs">
+      <button data-tab="upcoming" class="active">Предстоящие</button>
+      <button data-tab="past">Прошедшие</button>
+    </div>
+    <div class="bookings-list" id="adminList"></div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="sign">с любовью к деталям</div>
+    <div>© Динара · Перманентный макияж</div>
+  </footer>
+
+</div>
+
+<!-- DAY MODAL -->
+<div class="modal" id="dayModal">
+  <div class="modal-content">
+    <button class="modal-close" data-close="dayModal">✕</button>
+    <div class="modal-body">
+      <h3 class="modal-title" id="dayTitle">—</h3>
+      <div class="modal-sub" id="daySub">—</div>
+      <div class="slots" id="slotsContainer"></div>
+      <div id="adminDayActions" style="display:none;margin-top:18px"></div>
+    </div>
+  </div>
+</div>
+
+<!-- BOOKING MODAL -->
+<div class="modal" id="bookingModal">
+  <div class="modal-content">
+    <button class="modal-close" data-close="bookingModal">✕</button>
+    <div class="modal-body" id="bookingBody"></div>
+  </div>
+</div>
+
+<div class="sync" id="sync">
+  <span class="dot"></span><span id="syncText">Подключение…</span>
+</div>
+
+<script type="module">
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js';
+import {
+  getDatabase, ref, onValue, push, update, remove
+} from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js';
+
+/* ============================================================
+   1. КОНФИГ FIREBASE — вставьте свои значения
+   ============================================================ */
+const firebaseConfig = {
+  apiKey: "AIzaSyAEG69wkqPL2mmcoCl0GIx-uxbLAUTx4a8",
+  authDomain: "pmu-website-7dd88.firebaseapp.com",
+  projectId: "pmu-website-7dd88",
+  storageBucket: "pmu-website-7dd88.firebasestorage.app",
+  messagingSenderId: "155884781984",
+  appId: "1:155884781984:web:216726815cfa68ae89e4c5"
+};
+
+/* ============================================================
+   2. НАСТРОЙКИ СТУДИИ — правьте под себя
+   ============================================================ */
+const STUDIO = {
+  id: 'dinara-pmu-2025-x7k9m2',  // уникальный ID — придумайте свой
+  adminPin: '4321',               // PIN для режима мастера
+  workDays: [1,2,3,4,5,6],        // 0=Вс, 1=Пн, ..., 6=Сб (у Динары выходной — воскресенье)
+  workStart: '10:00',
+  workEnd:   '20:00',
+  slotMinutes: 120,               // длина окна в минутах (2 часа)
+  services: [
+    'Пудровые брови',
+    'Татуаж губ',
+    'Межресничка',
+    'Коррекция'
+  ]
+};
+
+/* ============================================================ */
+
+const $ = s => document.querySelector(s);
+const $$ = s => document.querySelectorAll(s);
+
+const els = {
+  adminToggle: $('#adminToggle'),
+  adminPanel:  $('#adminPanel'),
+  adminList:   $('#adminList'),
+  days:        $('#days'),
+  monthLabel:  $('#monthLabel'),
+  prevMonth:   $('#prevMonth'),
+  nextMonth:   $('#nextMonth'),
+  dayModal:    $('#dayModal'),
+  dayTitle:    $('#dayTitle'),
+  daySub:      $('#daySub'),
+  slotsContainer: $('#slotsContainer'),
+  adminDayActions: $('#adminDayActions'),
+  bookingModal: $('#bookingModal'),
+  bookingBody:  $('#bookingBody'),
+  sync:        $('#sync'),
+  syncText:    $('#syncText')
+};
+
+let db = null;
+let bookings = {};
+let blocks = {};
+let unsubscribeBookings = null;
+let unsubscribeBlocks = null;
+
+let viewYear, viewMonth;
+let selectedDate = null;
+let selectedSlot = null;
+let adminMode = false;
+let adminTab = 'upcoming';
+
+/* ---------- утилиты ---------- */
+const pad2 = n => String(n).padStart(2,'0');
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({
+  '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+}[c]));
+const dateKey = d => `${d.getFullYear()}-${pad2(d.getMonth()+1)}-${pad2(d.getDate())}`;
+
+const MONTHS_RU = ['Январь','Февраль','Март','Апрель','Май','Июнь','Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь'];
+const MONTHS_RU_GEN = ['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'];
+
+function fmtDateLong(dateStr){
+  const [y,m,d] = dateStr.split('-').map(Number);
+  return `${d} ${MONTHS_RU_GEN[m-1]} ${y}`;
+}
+
+function fmtDateShort(dateStr){
+  const [y,m,d] = dateStr.split('-').map(Number);
+  return `${d} ${MONTHS_RU_GEN[m-1]}`;
+}
+
+/* ---------- расписание ---------- */
+function getSlots(){
+  const [sh, sm] = STUDIO.workStart.split(':').map(Number);
+  const [eh, em] = STUDIO.workEnd.split(':').map(Number);
+  const slot = STUDIO.slotMinutes;
+  let cur = sh*60 + sm;
+  const end = eh*60 + em;
+  const slots = [];
+  while (cur + slot <= end){
+    const sH = Math.floor(cur/60), sM = cur%60;
+    const eH = Math.floor((cur+slot)/60), eM = (cur+slot)%60;
+    slots.push({
+      start: `${pad2(sH)}:${pad2(sM)}`,
+      end:   `${pad2(eH)}:${pad2(eM)}`
+    });
+    cur += slot;
+  }
+  return slots;
+}
+
+/* ---------- инициализация Firebase ---------- */
+function initFirebase(){
+  const app = initializeApp(firebaseConfig);
+  db = getDatabase(app);
+
+  const base = `studios/${STUDIO.id}`;
+
+  els.sync.className = 'sync';
+  els.syncText.textContent = 'Подключение…';
+
+  unsubscribeBookings = onValue(ref(db, `${base}/bookings`),
+    snap => {
+      bookings = snap.val() || {};
+      els.sync.className = 'sync online';
+      els.syncText.textContent = 'Синхронизировано';
+      render();
+    },
+    () => {
+      els.sync.className = 'sync offline';
+      els.syncText.textContent = 'Нет связи';
+    }
+  );
+
+  unsubscribeBlocks = onValue(ref(db, `${base}/blocks`),
+    snap => {
+      blocks = snap.val() || {};
+      render();
+    }
+  );
+}
+
+/* ---------- статус дня ---------- */
+function getDayStatus(dateStr){
+  const [y,m,d] = dateStr.split('-').map(Number);
+  const date = new Date(y, m-1, d);
+
+  const today = new Date(); today.setHours(0,0,0,0);
+  if (date < today) return 'past';
+
+  const dow = date.getDay();
+  if (!STUDIO.workDays.includes(dow)) return 'closed';
+
+  const dayBlocks = Object.values(blocks).filter(b => b.date === dateStr);
+  if (dayBlocks.some(b => b.allDay)) return 'closed';
+
+  const dayBookings = Object.values(bookings).filter(b =>
+    b.date === dateStr && b.status !== 'cancelled'
+  );
+
+  const slots = getSlots();
+  let free = 0;
+  slots.forEach(s => {
+    const blocked = dayBlocks.some(b => b.time === s.start);
+    const booked = dayBookings.some(b => b.time === s.start);
+    if (!blocked && !booked) free++;
+  });
+
+  if (free === 0) return 'full';
+  if (free === slots.length) return 'free';
+  return 'partial';
+}
+
+/* ---------- рендер календаря ---------- */
+function renderCalendar(){
+  els.monthLabel.textContent = `${MONTHS_RU[viewMonth]} ${viewYear}`;
+
+  const first = new Date(viewYear, viewMonth, 1);
+  let startDow = first.getDay() - 1;
+  if (startDow < 0) startDow = 6;
+
+  const daysInMonth = new Date(viewYear, viewMonth+1, 0).getDate();
+  const daysInPrev = new Date(viewYear, viewMonth, 0).getDate();
+  const totalCells = Math.ceil((startDow + daysInMonth) / 7) * 7;
+
+  const todayStr = dateKey(new Date());
+
+  let html = '';
+  for (let i = 0; i < totalCells; i++){
+    let day, m, y, currentMonth;
+    if (i < startDow){
+      day = daysInPrev - startDow + i + 1;
+      m = viewMonth - 1; y = viewYear; currentMonth = false;
+      if (m < 0){ m = 11; y--; }
+    } else if (i >= startDow + daysInMonth){
+      day = i - startDow - daysInMonth + 1;
+      m = viewMonth + 1; y = viewYear; currentMonth = false;
+      if (m > 11){ m = 0; y++; }
+    } else {
+      day = i - startDow + 1;
+      m = viewMonth; y = viewYear; currentMonth = true;
+    }
+
+    const ds = `${y}-${pad2(m+1)}-${pad2(day)}`;
+    const status = currentMonth ? getDayStatus(ds) : 'other';
+    const classes = ['day'];
+    if (!currentMonth) classes.push('other-month');
+    else classes.push(status);
+    if (ds === todayStr) classes.push('today');
+    if (ds === selectedDate) classes.push('selected');
+
+    const clickable = currentMonth && status !== 'past' && status !== 'closed';
+    const cursor = clickable ? 'pointer' : 'default';
+
+    html += `
+      <button class="${classes.join(' ')}" data-date="${ds}"
+              ${clickable ? '' : 'disabled'}
+              style="cursor:${cursor}">
+        <span class="num">${day}</span>
+        <span class="dot"></span>
+      </button>
+    `;
+  }
+  els.days.innerHTML = html;
+
+  els.days.querySelectorAll('.day:not([disabled])').forEach(btn => {
+    btn.addEventListener('click', () => openDay(btn.dataset.date));
+  });
+
+  els.prevMonth.disabled = false;
+  els.nextMonth.disabled = false;
+
+  // блокируем навигацию сильно назад (больше года)
+  const now = new Date();
+  const min = new Date(now.getFullYear(), now.getMonth() - 1, 1);
+  if (new Date(viewYear, viewMonth, 1) <= min) els.prevMonth.disabled = true;
+}
+
+/* ---------- рендер дня ---------- */
+function openDay(dateStr){
+  selectedDate = dateStr;
+  renderCalendar();
+
+  const [y,m,d] = dateStr.split('-').map(Number);
+  const dow = new Date(y, m-1, d).getDay();
+  const dowNames = ['воскресенье','понедельник','вторник','среда','четверг','пятница','суббота'];
+
+  els.dayTitle.textContent = fmtDateLong(dateStr);
+  els.daySub.textContent = dowNames[dow];
+
+  const slots = getSlots();
+  const dayBlocks = Object.values(blocks).filter(b => b.date === dateStr);
+  const dayBookings = Object.values(bookings).filter(b =>
+    b.date === dateStr && b.status !== 'cancelled'
+  );
+
+  let freeCount = 0;
+  const html = slots.map(s => {
+    const blocked = dayBlocks.some(b => b.time === s.start);
+    const booking = dayBookings.find(b => b.time === s.start);
+    const isBusy = !!booking;
+    const isBlocked = blocked && !isBusy;
+
+    let cls = 'slot';
+    let status = 'свободно';
+    let disabled = '';
+
+    if (isBusy){
+      cls += ' busy';
+      status = booking.status === 'confirmed' ? 'подтверждено' : 'занято';
+      disabled = 'disabled';
+    } else if (isBlocked){
+      cls += ' blocked';
+      status = 'закрыто';
+      disabled = 'disabled';
+    } else {
+      cls += ' free';
+      freeCount++;
+    }
+
+    return `
+      <button class="${cls}" data-time="${s.start}" data-date="${dateStr}" ${disabled}>
+        <span class="time">${s.start}–${s.end}</span>
+        <span class="status">${status}</span>
+      </button>
+    `;
+  }).join('');
+
+  els.slotsContainer.innerHTML = html;
+  els.slotsContainer.querySelectorAll('.slot.free').forEach(btn => {
+    btn.addEventListener('click', () => openBookingForm(btn.dataset.date, btn.dataset.time));
+  });
+
+  // админские действия
+  if (adminMode){
+    const isWholeDayBlocked = dayBlocks.some(b => b.allDay);
+    els.adminDayActions.style.display = 'block';
+    els.adminDayActions.innerHTML = `
+      <button class="btn secondary" id="toggleDayBlock">
+        ${isWholeDayBlocked ? 'Открыть день' : 'Закрыть весь день'}
+      </button>
+    `;
+    $('#toggleDayBlock').addEventListener('click', () => toggleDayBlock(dateStr, isWholeDayBlocked));
+  } else {
+    els.adminDayActions.style.display = 'none';
+  }
+
+  els.daySub.textContent = `${dowNames[dow]} · свободно ${freeCount} из ${slots.length}`;
+  els.dayModal.classList.add('open');
+}
+
+async function toggleDayBlock(dateStr, isBlocked){
+  const base = `studios/${STUDIO.id}/blocks`;
+  const existing = Object.entries(blocks).find(([_, b]) =>
+    b.date === dateStr && b.allDay
+  );
+
+  if (isBlocked && existing){
+    await remove(ref(db, `${base}/${existing[0]}`));
+  } else if (!isBlocked){
+    await push(ref(db, base), {
+      date: dateStr,
+      allDay: true,
+      createdAt: Date.now()
+    });
+  }
+  openDay(dateStr);
+}
+
+/* ---------- форма записи ---------- */
+function openBookingForm(dateStr, time){
+  selectedSlot = { date: dateStr, time };
+  const slot = getSlots().find(s => s.start === time);
+
+  const servicesHtml = STUDIO.services.map((s,i) =>
+    `<option value="${esc(s)}"${i===0?' selected':''}>${esc(s)}</option>`
+  ).join('');
+
+  els.bookingBody.innerHTML = `
+    <h3 class="modal-title">Запись</h3>
+    <div class="modal-sub">Заполните данные, и мастер подтвердит запись</div>
+
+    <div class="summary-box">
+      <div class="row">
+        <span class="lbl">Дата</span>
+        <span class="val">${fmtDateShort(dateStr)}</span>
+      </div>
+      <div class="row">
+        <span class="lbl">Время</span>
+        <span class="val">${slot.start}–${slot.end}</span>
+      </div>
+    </div>
+
+    <form id="bookForm">
+      <div class="form-field">
+        <label for="f-name">Ваше имя</label>
+        <input id="f-name" name="name" type="text" required
+               placeholder="Как к вам обращаться" maxlength="60" autocomplete="name">
+      </div>
+      <div class="form-field">
+        <label for="f-phone">Телефон</label>
+        <input id="f-phone" name="phone" type="tel" required
+               placeholder="+7 900 000-00-00" maxlength="20" autocomplete="tel">
+      </div>
+      <div class="form-field">
+        <label for="f-service">Услуга</label>
+        <select id="f-service" name="service">${servicesHtml}</select>
+      </div>
+      <div class="form-field">
+        <label for="f-notes">Пожелания (необязательно)</label>
+        <textarea id="f-notes" name="notes" maxlength="240"
+                  placeholder="Аллергии, референсы, вопросы"></textarea>
+      </div>
+      <button class="btn" type="submit">Записаться</button>
+    </form>
+  `;
+
+  $('#bookForm').addEventListener('submit', submitBooking);
+  els.dayModal.classList.remove('open');
+  els.bookingModal.classList.add('open');
+  setTimeout(() => $('#f-name')?.focus(), 100);
+}
+
+async function submitBooking(e){
+  e.preventDefault();
+  const form = e.target;
+  const btn = form.querySelector('button[type="submit"]');
+  btn.disabled = true;
+  btn.textContent = 'Отправляем…';
+
+  const data = {
+    date: selectedSlot.date,
+    time: selectedSlot.time,
+    name: form.name.value.trim(),
+    phone: form.phone.value.trim(),
+    service: form.service.value,
+    notes: form.notes.value.trim(),
+    status: 'pending',
+    createdAt: Date.now()
+  };
+
+  try{
+    await push(ref(db, `studios/${STUDIO.id}/bookings`), data);
+    showSuccess();
+  }catch(err){
+    console.error(err);
+    btn.disabled = false;
+    btn.textContent = 'Попробовать снова';
+    alert('Не удалось сохранить запись. Проверьте связь.');
+  }
+}
+
+function showSuccess(){
+  els.bookingBody.innerHTML = `
+    <div class="success">
+      <div class="icon">✓</div>
+      <h3>Заявка отправлена</h3>
+      <p>Мастер подтвердит запись и свяжется с вами по указанному номеру. Обычно это занимает несколько часов.</p>
+      <button class="btn secondary" data-close="bookingModal">Закрыть</button>
+    </div>
+  `;
+  els.bookingBody.querySelector('[data-close]')?.addEventListener('click', () => {
+    els.bookingModal.classList.remove('open');
+  });
+}
+
+/* ---------- админ ---------- */
+function setAdminMode(on){
+  adminMode = on;
+  els.adminToggle.classList.toggle('active', on);
+  els.adminPanel.classList.toggle('visible', on);
+  els.adminToggle.querySelector('span').textContent = on ? 'Выйти' : 'Мастер';
+  if (on) renderAdminList();
+}
+
+els.adminToggle.addEventListener('click', () => {
+  if (adminMode){
+    setAdminMode(false);
+    return;
+  }
+  const pin = prompt('Введите PIN мастера:');
+  if (pin === STUDIO.adminPin){
+    setAdminMode(true);
+  } else if (pin !== null){
+    alert('Неверный PIN');
+  }
+});
+
+$$('.admin-tabs button').forEach(btn => {
+  btn.addEventListener('click', () => {
+    adminTab = btn.dataset.tab;
+    $$('.admin-tabs button').forEach(b => b.classList.toggle('active', b === btn));
+    renderAdminList();
+  });
+});
+
+function renderAdminList(){
+  const now = Date.now();
+  const all = Object.entries(bookings).map(([id, b]) => ({ id, ...b }));
+
+  const todayStart = new Date(); todayStart.setHours(0,0,0,0);
+
+  let list = all.filter(b => {
+    const [y,m,d] = b.date.split('-').map(Number);
+    const dt = new Date(y, m-1, d).getTime();
+    return adminTab === 'upcoming' ? dt >= todayStart.getTime() : dt < todayStart.getTime();
+  });
+
+  list.sort((a, b) => {
+    const da = a.date + a.time;
+    const dbb = b.date + b.time;
+    return adminTab === 'upcoming' ? da.localeCompare(dbb) : dbb.localeCompare(da);
+  });
+
+  if (list.length === 0){
+    els.adminList.innerHTML = `
+      <div class="empty-state">
+        <span class="big">✦</span>
+        ${adminTab === 'upcoming' ? 'Пока нет предстоящих записей' : 'Прошедших записей нет'}
+      </div>
+    `;
+    return;
+  }
+
+  els.adminList.innerHTML = list.map(b => {
+    const isPast = adminTab === 'past';
+    const statusClass = isPast ? 'past' : b.status;
+    const statusLabel = {
+      pending: 'ожидает',
+      confirmed: 'подтверждено',
+      cancelled: 'отменено',
+      past: 'завершено'
+    }[statusClass] || statusClass;
+
+    let actionsHtml = '';
+    if (!isPast){
+      if (b.status === 'pending'){
+        actionsHtml += `<button class="confirm" data-act="confirm" data-id="${b.id}">Подтвердить</button>`;
+        actionsHtml += `<button class="cancel"  data-act="cancel"  data-id="${b.id}">Отменить</button>`;
+      } else if (b.status === 'confirmed'){
+        actionsHtml += `<button class="cancel" data-act="cancel" data-id="${b.id}">Отменить</button>`;
+      } else if (b.status === 'cancelled'){
+        actionsHtml += `<button class="confirm" data-act="restore" data-id="${b.id}">Восстановить</button>`;
+      }
+    }
+    actionsHtml += `<button class="del" data-act="delete" data-id="${b.id}">Удалить</button>`;
+
+    const notesHtml = b.notes ? `<div class="notes">${esc(b.notes)}</div>` : '';
+
+    return `
+      <div class="booking${isPast ? ' past' : ''}">
+        <div class="top-row">
+          <span class="when">${fmtDateShort(b.date)} · ${esc(b.time)}</span>
+          <span class="status-pill ${statusClass}">${statusLabel}</span>
+        </div>
+        <div class="client">
+          <span class="name">${esc(b.name)}</span>
+          <span class="phone">${esc(b.phone)}</span>
+        </div>
+        <div class="service-line">${esc(b.service)}</div>
+        ${notesHtml}
+        <div class="actions">${actionsHtml}</div>
+      </div>
+    `;
+  }).join('');
+
+  els.adminList.querySelectorAll('button[data-act]').forEach(btn => {
+    btn.addEventListener('click', () => handleAdminAction(btn.dataset.act, btn.dataset.id));
+  });
+}
+
+async function handleAdminAction(act, id){
+  const base = `studios/${STUDIO.id}/bookings/${id}`;
+  if (act === 'confirm'){
+    await update(ref(db, base), { status: 'confirmed' });
+  } else if (act === 'cancel'){
+    if (!confirm('Отменить запись? Клиент не увидит её в календаре.')) return;
+    await update(ref(db, base), { status: 'cancelled' });
+  } else if (act === 'restore'){
+    await update(ref(db, base), { status: 'confirmed' });
+  } else if (act === 'delete'){
+    if (!confirm('Удалить запись навсегда?')) return;
+    await remove(ref(db, base));
+  }
+}
+
+/* ---------- модалки ---------- */
+$$('[data-close]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.getElementById(btn.dataset.close)?.classList.remove('open');
+  });
+});
+
+$$('.modal').forEach(modal => {
+  modal.addEventListener('click', e => {
+    if (e.target === modal) modal.classList.remove('open');
+  });
+});
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape'){
+    $$('.modal.open').forEach(m => m.classList.remove('open'));
+  }
+});
+
+/* ---------- навигация по месяцам ---------- */
+els.prevMonth.addEventListener('click', () => {
+  viewMonth--;
+  if (viewMonth < 0){ viewMonth = 11; viewYear--; }
+  renderCalendar();
+});
+
+els.nextMonth.addEventListener('click', () => {
+  viewMonth++;
+  if (viewMonth > 11){ viewMonth = 0; viewYear++; }
+  renderCalendar();
+});
+
+/* ---------- единый рендер ---------- */
+function render(){
+  renderCalendar();
+  if (adminMode) renderAdminList();
+  if (selectedDate && els.dayModal.classList.contains('open')){
+    // обновляем открытый день без перезаписи шапки
+    openDay(selectedDate);
+  }
+}
+
+/* ---------- старт ---------- */
+const now = new Date();
+viewYear = now.getFullYear();
+viewMonth = now.getMonth();
+initFirebase();
+render();
+</script>
+</body>
+</html>
